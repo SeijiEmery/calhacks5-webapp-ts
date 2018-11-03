@@ -1,6 +1,6 @@
 import PageId from "./PageId";
 
-interface AppStoreState {
+interface IAppStoreState {
     pageId: PageId;
 };
-export default AppStoreState;
+export default IAppStoreState;

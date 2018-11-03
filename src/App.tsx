@@ -1,11 +1,11 @@
 import * as React from 'react';
 import './App.css';
-import AppStoreState from "./types/AppStoreState";
-import PageId from "./types/PageId";
 import CameraPage from './components/CameraPage';
+import IAppStoreState from "./types/AppStoreState";
+import PageId from "./types/PageId";
 
 class App extends React.Component {
-  state: AppStoreState;
+  public state: IAppStoreState;
 
   constructor (props: any) {
     super(props);
@@ -14,14 +14,6 @@ class App extends React.Component {
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
-  onSubmit () {
-    window.alert("submit!");
-  }
-  private renderPage () {
-    switch (this.state.pageId) {
-      case PageId.CAMERA_VIEW: return <CameraPage onSubmit={this.onSubmit}/>;
-    }
-  }
   public render() {
     return (
       <div className="App">
@@ -29,5 +21,14 @@ class App extends React.Component {
       </div>
     );
   }
+  private onSubmit () {
+    window.alert("submit!");
+  }
+  private renderPage () {
+    switch (this.state.pageId) {
+      case PageId.CAMERA_VIEW: return <CameraPage onSubmit={this.onSubmit}/>;
+    }
+  }
+  
 }
 export default App;

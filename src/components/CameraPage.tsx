@@ -1,11 +1,11 @@
 import * as React from 'react';
 import '../App.css';
 
-interface Props {
+interface IProps {
   onSubmit (): void;
 }
 
-const CameraPage = (props: Props) => {
+const CameraPage = (props: IProps) => {
   return (
     <div>
       <p>Camera...</p>
