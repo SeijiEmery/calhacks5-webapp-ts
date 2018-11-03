@@ -1,22 +1,33 @@
 import * as React from 'react';
 import './App.css';
-
-import logo from './logo.svg';
+import AppStoreState from "./types/AppStoreState";
+import PageId from "./types/PageId";
+import CameraPage from './components/CameraPage';
 
 class App extends React.Component {
+  state: AppStoreState;
+
+  constructor (props: any) {
+    super(props);
+    this.state = {
+      pageId: PageId.CAMERA_VIEW
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  onSubmit () {
+    window.alert("submit!");
+  }
+  private renderPage () {
+    switch (this.state.pageId) {
+      case PageId.CAMERA_VIEW: return <CameraPage onSubmit={this.onSubmit}/>;
+    }
+  }
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        {this.renderPage()}
       </div>
     );
   }
 }
-
 export default App;
